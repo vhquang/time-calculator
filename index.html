@@ -1,0 +1,95 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html ng-app="timeCalculator" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Time Calculator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+    <div class="container">
+        <div ng-controller="TimeCtrl">
+            <div class="">
+                 <table class="table table-bordered table-condensed">
+                     <!-- <colgroup>
+                         <col class="col-xs-2">
+                         <col class="col-xs-2">
+                         <col class="col-xs-2">
+                         <col class="col-xs-1">
+                     </colgroup> -->
+                     
+                     <thead>
+                        <th>In</th>
+                        <th>Out</th>
+                        <th>Duration</th>
+                     </thead>
+                     
+                     <tbody class="table table-stripped">
+                     <tr ng-repeat="row in data">
+                         <td>{{row.timeIn.hour}}:{{row.timeIn.minute}}</td>
+                         <td>{{row.timeOut.hour}}:{{row.timeOut.minute}}</td>
+                         <td>{{row.duration.hour}}:{{row.duration.minute}}</td>
+                         <td><span 
+                                class="small-btn btn-danger glyphicon glyphicon-remove-sign" 
+                                ng-click="removeTime($index);"
+                                ></span></td>
+                     </tr>
+                     </tbody>
+
+                     <tr>
+                         <td><input type="time" ng-model="newTimeIn"></td>
+                         <td><input type="time" ng-model="newTimeOut"></td>
+                         <td></td>
+                         <td><span 
+                                class="small-btn btn-success glyphicon glyphicon-plus-sign" 
+                                ng-click="addNewTime(newTimeIn, newTimeOut);"
+                                ></span></td>
+                     </tr>
+                     
+                     <tr>
+                         <td></td><td>Total</td>
+                         <td>{{totalTime.hour}}:{{totalTime.minute}}</td>
+                     </tr>
+                 </table>
+
+                 <table class="table table-bordered">
+                 </table>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-info" ng-click="reset();">Reset</button>
+            </div>
+        </div>
+
+        <div class="navbar-fixed-bottom panel-footer">
+            <p> ♥ from QV</p>
+        </div>
+
+    </div>
+    
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
